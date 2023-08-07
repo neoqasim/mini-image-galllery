@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- <link rel="stylesheet" href="styles.css"> -->
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      body {
+        font-family: 'Poppins', sans-serif;
+      }
+      .gallery{
+          width: 900px;
+          display: flex;
+          gap: .7rem;
+          overflow-x: scroll;
+          scroll-behavior: smooth;
+    }
+    .gallery div{
+        display: grid;
+        width: 100%;
+        grid-template-columns: auto auto auto;
+        grid-gap: 1.2rem;
+        flex: none;
+    }
+    .gallery div img{
+        width: 100%;
+        height: 30vh;
+        filter: grayscale(100%);
+        object-fit: contain;
+        transition: all .4s;
+
+    }
+
+    .gallery::-webkit-scrollbar{
+        display: none;
+    }
+    .gallery_wrap{
+        display: flex;justify-content: center;
+        align-items: center;
+        margin: 10% auto;
+    }
+    .gallery_wrap img{
+        margin: 0 1rem;
+        width: 50px;
+    }
+    .gallery div img:hover{
+        filter: grayscale(0);
+        cursor: pointer;
+        scale: 1.09;
+    }
+    #backbtn,#nextBtn{
+        transform: all 2s;
+        cursor: pointer;
+        
+    }
+    </style>
+
+
+    <title>Simple Website</title>
+</head>
+<body>
+  
+    
+    
+    <span>scroll up or down to move left or right</span>
+    <div class="gallery_wrap" id="">
+        <img src="./back_arrow.png" alt="back icon here" id="backbtn">
+        <div class=" gallery">
+            <div>
+                <span><img src="./ERROR-404-SLEEP-NOT-FOUND-.jpg" alt=""></span>
+                <span><img src="./sleep not found.jpg" alt=""></span>
+                <!-- <span><img src="./eat-sleep-code-repeat-.png" alt=""></span> -->
+                <span><img src="./code_sleep.png" alt=""></span>
+            </div>
+            <div>
+                <span><img src="./ERROR-404-SLEEP-NOT-FOUND-.jpg" alt=""></span>
+                <span><img src="./sleep not found.jpg" alt=""></span>
+                <span><img src="./eat-sleep-code-repeat-.png" alt=""></span>
+            </div>
+        </div>
+        <img src="./nex_arrow.png" alt="front icon here" id="nextBtn">
+    </div>
+<script>
+    let scrollContainer = document.querySelector('.gallery')
+    let backBtn = document.getElementById('backbtn')
+    let  nextBtn = document.getElementById('nextBtn')
+
+    scrollContainer.addEventListener("wheel",(evt)=>{
+        evt.preventDefault()
+        scrollContainer.scrollLeft+=evt.deltaY;
+    })
+    nextBtn.addEventListener('click',()=>{
+    scrollContainer.scrollLeft+= 300
+
+    })
+    backBtn.addEventListener('click',()=>{
+    scrollContainer.scrollLeft+= -300
+
+    })
+</script>
+
+    
+</body>
+</html>
